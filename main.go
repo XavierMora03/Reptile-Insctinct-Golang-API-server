@@ -14,6 +14,11 @@ type album struct {
 	Artist string  `json:"artist"`
 	Price  float64 `json:"price"`
 }
+type mensaje struct {
+	Nombre string `json:"nombre"`
+	Amor   string `json:"amor_de_mi_vida"`
+	Msj    string `json:"teamomucho"`
+}
 
 // albums slice to seed record album data.
 var albums = []album{
@@ -22,10 +27,15 @@ var albums = []album{
 	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
 }
 
-// getAlubs
+// get albumns function
 func getAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
+
 func main() {
-	fmt.Print("hola")
+	fmt.Print("SERVER RUNNING")
+	router := gin.Default()
+	router.GET("/albumns", getAlbums)
+
+	router.Run("localhost:8080")
 }
