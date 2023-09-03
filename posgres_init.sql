@@ -1,7 +1,9 @@
 
 CREATE TYPE edad_t AS ENUM('Cria','Juvenil','Adulta') ;
 CREATE TYPE genero_t as ENUM('M','H');
-CREATE TABLE reptiles (
+CREATE SCHEMA IF NOT EXISTS productos;
+CREATE SCHEMA IF NOT EXISTS info_reptiles;
+CREATE TABLE productos.reptiles (
   id  SERIAL,
   name varchar(64) NOT NULL,
   regularPrice DECIMAL(7,2),
@@ -14,7 +16,7 @@ CREATE TABLE reptiles (
 );
 
 CREATE TYPE genetica_t as ENUM('Recesivo','Dominante','Codominante','Supercodominante','Otro');
-CREATE TABLE brgvlzm6ifhza3x0u4rs.geneticas(
+CREATE TABLE info_reptiles.geneticas(
   id  SERIAL,
   genName varchar(64) NOT NULL,
   tipo genetica_t NOT NULL,
@@ -22,19 +24,19 @@ CREATE TABLE brgvlzm6ifhza3x0u4rs.geneticas(
   PRIMARY KEY(id)
 );
 
-CREATE TABLE brgvlzm6ifhza3x0u4rs.reptiles_geneticas (
+CREATE TABLE info_reptiles.reptiles_geneticas (
   reptileID integer,
   geneticID integer,
-  FOREIGN KEY(reptileID) REFERENCES brgvlzm6ifhza3x0u4rs.reptiles(id),
-  FOREIGN KEY(geneticID) REFERENCES brgvlzm6ifhza3x0u4rs.geneticas(id) ,
+  FOREIGN KEY(reptileID) REFERENCES productos.reptiles(id),
+  FOREIGN KEY(geneticID) REFERENCES info_reptiles.geneticas(id) ,
   UNIQUE (reptileID,geneticID)
 );
 
-CREATE TABLE brgvlzm6ifhza3x0u4rs.fotos_reptiles(
+CREATE TABLE productos.fotos_reptiles(
   id  SERIAL,
-  img MEDIUMBLOB NOT NULL,
+  img BYTEA NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(id) REFERENCES brgvlzm6ifhza3x0u4rs.reptiles(id)
+  FOREIGN KEY(id) REFERENCES productos.reptiles(id)
 );
 
 
