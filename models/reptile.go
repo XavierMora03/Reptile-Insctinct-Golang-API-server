@@ -41,13 +41,10 @@ func GetReptiles(c *gin.Context) {
 func PostReptiles(c *gin.Context) {
 	var newAlbum Reptile
 
-	// Call BindJSON to bind the received JSON to
-	// newAlbum.
 	if err := c.BindJSON(&newAlbum); err != nil {
+		log.Fatal(err)
 		return
 	}
-
-	// Add the new album to the slice.
 	ReptilList = append(ReptilList, newAlbum)
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
