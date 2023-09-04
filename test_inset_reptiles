@@ -2,4 +2,4 @@ curl http://localhost:8080/reptiles \
     --include \
     --header "Content-Type: application/json" \
     --request "POST" \
-	  --data '{Name: "Spotnose probable Blade", RegularPrice: 5000, Price: 4499, AgeCategory: "Adulto", Description: "100% het clone", Genre: "Macho"}'
+	  --data '{"name": "Spotnose probable Blade", "regularPrice": 5000, "price": 4499, "age": "Adulto", "description": "100% het clone", "genre": "Macho"}'

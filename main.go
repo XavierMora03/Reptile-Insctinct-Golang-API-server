@@ -36,7 +36,6 @@ func postAlbums(c *gin.Context) {
 	if err := c.BindJSON(&newAlbum); err != nil {
 		return
 	}
-
 	// Add the new album to the slice.
 	albums = append(albums, newAlbum)
 	c.IndentedJSON(http.StatusCreated, newAlbum)
@@ -47,8 +46,8 @@ func main() {
 	router := gin.Default()
 	router.GET("/reptiles", models.GetReptiles)
 	router.POST("/reptiles", models.PostReptiles)
-	router.GET("/albumns", getAlbums)
-	router.POST("/albumns", postAlbums)
+	router.GET("/albums", getAlbums)
+	router.POST("/albums", postAlbums)
 
 	router.Run("localhost:8080")
 }
