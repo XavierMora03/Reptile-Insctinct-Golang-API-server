@@ -3,7 +3,6 @@ package controllers
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 var DB *gorm.DB
@@ -17,7 +16,6 @@ func ConnectDatabase() {
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
-	log.Default().Output(0, "DATABASE CONECTED SUCCESSFULLY")
 
 	// err = database.AutoMigrate(&Book{})
 	if err != nil {
