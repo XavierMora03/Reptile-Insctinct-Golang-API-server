@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"ReptileApi/models"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -19,16 +20,17 @@ func GetReptiles(c *gin.Context) {
 }
 
 func DeleteReptiles(c *gin.Context) {
-	// var id_delete uint64 = c.GetHeader()
+	// var delete_item models.Reptile
+	fmt.Println("este es el id:", c.Param("data"))
 }
 
 func PostReptiles(c *gin.Context) {
-	var newAlbum models.Reptile
+	var reptile models.Reptile
 
-	if err := c.BindJSON(&newAlbum); err != nil {
+	if err := c.BindJSON(&reptile); err != nil {
 		log.Fatal(err)
 		return
 	}
-	ReptilList = append(ReptilList, newAlbum)
-	c.IndentedJSON(http.StatusCreated, newAlbum)
+	ReptilList = append(ReptilList, reptile)
+	c.IndentedJSON(http.StatusCreated, reptile)
 }

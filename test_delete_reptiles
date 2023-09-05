@@ -1,5 +1,5 @@
-curl http://localhost:8080/resptiles \
+curl http://localhost:8080/reptiles \
   --include \
-  --header "Content-Type: aplication-json"
-  --request "DELETE"
-    --data '{"id":0}'
+  --header "Content-Type: aplication-json" \
+  --request "DELETE" \
+    --data '{"id":99}'

@@ -11,6 +11,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/reptiles", controllers.GetReptiles)
 	router.POST("/reptiles", controllers.PostReptiles)
+	router.DELETE("/reptiles", controllers.DeleteReptiles)
 
 	router.Run("localhost:8080")
 }
