@@ -2,7 +2,7 @@ package main
 
 import (
 	// "encoding/json"
-	"ReptileApi/models"
+	"ReptileApi/controllers"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -44,8 +44,8 @@ func postAlbums(c *gin.Context) {
 func main() {
 	fmt.Print("SERVER RUNNING")
 	router := gin.Default()
-	router.GET("/reptiles", models.GetReptiles)
-	router.POST("/reptiles", models.PostReptiles)
+	router.GET("/reptiles", controllers.GetReptiles)
+	router.POST("/reptiles", controllers.PostReptiles)
 	router.GET("/albums", getAlbums)
 	router.POST("/albums", postAlbums)
 
