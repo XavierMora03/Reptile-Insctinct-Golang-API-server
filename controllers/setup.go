@@ -1,7 +1,6 @@
 package controllers
 
-
-"""
+/*
 import (
 	_ "grom.io/drivers/postgres"
 	"grom.io/grom"
@@ -24,4 +23,4 @@ func ConnectDatabase() {
 
 	DB = database
 }
-"""
+*/
