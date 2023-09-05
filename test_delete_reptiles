@@ -1,0 +1,5 @@
+curl http://localhost:8080/resptiles \
+  --include \
+  --header "Content-Type: aplication-json"
+  --request "DELETE"
+    --data '{"id":0}'
