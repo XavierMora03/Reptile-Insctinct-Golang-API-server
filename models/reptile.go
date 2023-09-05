@@ -38,6 +38,10 @@ func GetReptiles(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
+func DeleteReptiles(c *gin.Context) {
+	// var id_delete uint64 = c.GetHeader()
+}
+
 func PostReptiles(c *gin.Context) {
 	var newAlbum Reptile
 
