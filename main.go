@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+	controllers.ConnectDatabase()
+
 	fmt.Print("SERVER RUNNING")
 	router := gin.Default()
 	router.GET("/reptiles", controllers.GetReptiles)
