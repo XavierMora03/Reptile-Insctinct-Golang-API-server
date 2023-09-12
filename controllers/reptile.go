@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"ReptileApi/db"
 	"ReptileApi/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -16,6 +17,16 @@ var ReptilList = []models.Reptile{
 }
 
 func GetReptiles(c *gin.Context) {
+
+	log.Println(db.Db)
+	return
+	retriveReptiles := `SELECT * FROM productos.reptiles`
+	data, err := db.Db.Exec(retriveReptiles)
+
+	if err != nil {
+		panic(err)
+	}
+	log.Println(data)
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
