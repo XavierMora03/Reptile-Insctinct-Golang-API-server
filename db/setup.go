@@ -3,8 +3,8 @@ package db
 import (
 	"database/sql"
 	"fmt"
-
 	_ "github.com/lib/pq"
+	"log"
 )
 
 const (
@@ -19,7 +19,7 @@ var psqlInfo = fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s ssl
 var Db *sql.DB = nil
 
 func PrintPsqlInfo() {
-	fmt.Println(psqlInfo)
+	log.Println(psqlInfo)
 }
 
 func ConnectDb() {
@@ -33,5 +33,5 @@ func ConnectDb() {
 	}
 	defer Db.Close()
 
-	fmt.Println("Successfully connected!")
+	log.Println("Successfully connected!")
 }
