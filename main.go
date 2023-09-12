@@ -2,11 +2,12 @@ package main
 
 import (
 	"ReptileApi/controllers"
+	"ReptileApi/db"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	controllers.ConnectDatabase()
+	db.ConnectDb()
 
 	router := gin.Default()
 	router.GET("/reptiles", controllers.GetReptiles)
