@@ -1,4 +1,4 @@
-package controllers
+package db
 
 import (
 	"ReptileApi/models"
@@ -16,6 +16,15 @@ var ReptilList = []models.Reptile{
 }
 
 func GetReptiles(c *gin.Context) {
+
+	retriveStatement := `SELECT * FROM reptiles`
+	data, err := Db.Exec(retriveStatement)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("ESTA ES MI IMPORRRRT")
+	fmt.Println(data)
+
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
