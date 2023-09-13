@@ -18,10 +18,10 @@ var ReptilList = []models.Reptile{
 
 func GetReptiles(c *gin.Context) {
 
-	log.Println(db.Db)
+	log.Println(db.db)
 	return
 	retriveReptiles := `SELECT * FROM productos.reptiles`
-	data, err := db.Db.Exec(retriveReptiles)
+	data, err := db.db.Exec(retriveReptiles)
 
 	if err != nil {
 		panic(err)

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	db.ConnectDb()
+	db.Connectdb()
 
 	router := gin.Default()
 	router.GET("/reptiles", controllers.GetReptiles)
