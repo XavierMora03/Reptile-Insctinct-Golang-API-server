@@ -30,7 +30,8 @@ func AddReptiles(reptilelist []models.Reptile) {
 
 func AddReptile(reptile models.Reptile) int {
 
-	addReptilesStatement := `INSERT INTO TABLE productos.reptiles VALUES ($1, $2, $3, $4, $5, $6)`
+	addReptilesStatement := `INSERT INTO productos.reptiles (name, RegularPrice , price,age,description,genre)
+													VALUES ($1, $2, $3, $4, $5, $6)`
 	res, err := db.Exec(addReptilesStatement, reptile.Name, reptile.RegularPrice, reptile.Price,
 		reptile.AgeCategory, reptile.Description, reptile.Genre)
 

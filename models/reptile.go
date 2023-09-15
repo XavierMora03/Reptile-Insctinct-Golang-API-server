@@ -1,5 +1,10 @@
 package models
 
+const (
+	MACHO  = "M"
+	HEMBRA = "H"
+)
+
 // const MAX_PHOTOS_PER_REPTILE_PRODUCT int = 10
 type Reptile struct {
 	ID           uint64 `json:"id"`
