@@ -1,6 +1,7 @@
 package db
 
 import (
+	"ReptileApi/models"
 	_ "database/sql"
 	"fmt"
 	"log"
@@ -14,8 +15,33 @@ func RetriveReptiles() {
 	if err != nil {
 		panic(err)
 	}
-	log.Println("esta es la rata ", data)
+	log.Println("esta es la data ", data)
 	fmt.Println(data.Columns())
 	fmt.Println(data.Scan())
 	// return data.LastInsertId()
+}
+
+func AddReptiles(reptilelist []models.Reptile) {
+	// var newIdList []int64
+	for i := 0; i < len(reptilelist); i++ {
+	}
+
+}
+
+func AddReptile(reptile models.Reptile) int {
+
+	addReptilesStatement := `INSERT INTO TABLE productos.reptiles VALUES ($1, $2, $3, $4, $5, $6)`
+	res, err := db.Exec(addReptilesStatement, reptile.Name, reptile.RegularPrice, reptile.Price,
+		reptile.AgeCategory, reptile.Description, reptile.Genre)
+
+	if err != nil {
+		panic(err)
+	}
+
+	lastId, err := res.LastInsertId()
+
+	if err != nil {
+		panic(err)
+	}
+	return int(lastId)
 }

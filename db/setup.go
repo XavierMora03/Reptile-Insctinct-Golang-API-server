@@ -20,11 +20,10 @@ var db *sql.DB = nil
 
 func Connectdb() {
 
-	if dbPointer, err := sql.Open("postgres", psqlInfo); err != nil {
+	dbPointer, err := sql.Open("postgres", psqlInfo)
+	if err != nil {
 		panic(err)
-	} else {
-		db = dbPointer
 	}
-
+	db = dbPointer
 	log.Println("DATABASE SUCCESSFULLY CONNECTED!")
 }
