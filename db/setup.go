@@ -16,18 +16,15 @@ const (
 )
 
 var psqlInfo = fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-var db *sql.db = nil
+var db *sql.DB = nil
 
 func Connectdb() {
-	db, err := sql.Open("postgres", psqlInfo)
-	DoesdbPointerWork()
-	if err != nil {
+
+	if dbPointer, err := sql.Open("postgres", psqlInfo); err != nil {
 		panic(err)
+	} else {
+		db = dbPointer
 	}
 
-	if err := db.Ping(); err != nil {
-		panic(err)
-	}
-
-	log.Println("Successfully connected!")
+	log.Println("DATABASE SUCCESSFULLY CONNECTED!")
 }

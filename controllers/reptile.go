@@ -18,20 +18,12 @@ var ReptilList = []models.Reptile{
 
 func GetReptiles(c *gin.Context) {
 
-	log.Println(db.db)
-	return
-	retriveReptiles := `SELECT * FROM productos.reptiles`
-	data, err := db.db.Exec(retriveReptiles)
-
-	if err != nil {
-		panic(err)
-	}
-	log.Println(data)
+	db.RetriveReptiles()
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
 func DeleteReptiles(c *gin.Context) {
-	// var delete_item models.Reptile
+
 	fmt.Println("este es el id:", c.Param("data"))
 }
 

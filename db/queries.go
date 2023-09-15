@@ -1,26 +1,21 @@
 package db
 
-import(
-	"log"
+import (
+	_ "database/sql"
 	"fmt"
+	"log"
 )
 
-func DoesdbPointerWork() {
-	log.Println("ESTA ES EL VALOR", db)
-	return
-	if err := db.Ping(); err != nil {
-		panic(err)
-	}
-}
-
-func retriveReptiles(){
+func RetriveReptiles() {
 
 	retriveReptiles := `SELECT * FROM productos.reptiles`
-	data, err := db.db.Exec(retriveReptiles)
+	data, err := db.Query(retriveReptiles)
 
 	if err != nil {
 		panic(err)
 	}
-	log.Println(data)
-
+	log.Println("esta es la rata ", data)
+	fmt.Println(data.Columns())
+	fmt.Println(data.Scan())
+	// return data.LastInsertId()
 }
