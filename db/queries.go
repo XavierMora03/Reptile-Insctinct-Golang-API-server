@@ -39,7 +39,7 @@ func AddReptile(reptile models.Reptile) int {
 		panic(err)
 	}
 
-	lastId, err := res.LastInsertId()
+	lastId, err := res.RowsAffected()
 
 	if err != nil {
 		panic(err)

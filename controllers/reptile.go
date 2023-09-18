@@ -10,16 +10,16 @@ import (
 )
 
 var ReptilList = []models.Reptile{
-	{Name: "Mohave", RegularPrice: 2500, Price: 1999, AgeCategory: "Cria", Description: "Bonita mohave pastel", Genre: models.HEMBRA},
-	{Name: "Leopard Het-Clown", RegularPrice: 2000, Price: 1000, AgeCategory: "Cria", Description: "Leopard", Genre: models.MACHO},
-	{Name: "Spotnose probable Blade 100% Het-Clown", RegularPrice: 9500, Price: 9200, AgeCategory: "Cria", Description: "Bonita Leopard Het-Clown", Genre: models.HEMBRA},
-	{Name: "Super Enchi Orange Dream Pastel ", RegularPrice: 2500, Price: 1999, AgeCategory: "Cria", Description: "Bonita Het Clown", Genre: models.MACHO},
+	{Name: "Mohave", RegularPrice: 2500, Price: 1999, AgeCategory: models.Cria, Description: "Bonita mohave pastel", Genre: models.HEMBRA},
+	{Name: "Leopard Het-Clown", RegularPrice: 2000, Price: 1000, AgeCategory: models.Cria, Description: "Leopard", Genre: models.MACHO},
+	{Name: "Spotnose probable Blade 100% Het-Clown", RegularPrice: 9500, Price: 9200, AgeCategory: models.Cria, Description: "Bonita Leopard Het-Clown", Genre: models.HEMBRA},
+	{Name: "Super Enchi Orange Dream Pastel ", RegularPrice: 2500, Price: 1999, AgeCategory: models.Cria, Description: "Bonita Het Clown", Genre: models.MACHO},
 }
 
 func GetReptiles(c *gin.Context) {
 
 	db.RetriveReptiles()
-	db.AddReptile(ReptilList[0])
+	log.Println("ESTO RETORNA", db.AddReptile(ReptilList[0]))
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
