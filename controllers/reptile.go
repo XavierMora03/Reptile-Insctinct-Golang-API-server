@@ -19,7 +19,7 @@ var ReptilList = []models.Reptile{
 func GetReptiles(c *gin.Context) {
 
 	db.RetriveReptiles()
-	log.Println("ESTO RETORNA", db.AddReptile(ReptilList[0]))
+	db.AddReptile(ReptilList[1])
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
