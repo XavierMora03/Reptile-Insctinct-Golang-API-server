@@ -6,8 +6,8 @@ CREATE SCHEMA IF NOT EXISTS info_reptiles;
 CREATE TABLE productos.reptiles (
   id  SERIAL,
   name varchar(64) NOT NULL,
-  regularPrice DECIMAL(7,2),
-  price DECIMAL(7,2) NOT NULL,
+  regularPrice MONEY,
+  price MONEY NOT NULL,
   age edad_t DEFAULT 'Cria',
   description varchar(256),
   genre genero_t DEFAULT 'M',

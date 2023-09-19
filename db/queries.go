@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func RetriveReptiles() {
+func RetriveReptiles(reptileList *[]models.Reptile) {
 
 	retriveReptiles := `SELECT * FROM productos.reptiles`
 	rows, err := db.Query(retriveReptiles)
@@ -17,6 +17,16 @@ func RetriveReptiles() {
 
 	defer rows.Close()
 
+	for rows.Next() {
+		var reptile models.Reptile
+		err := rows.Scan(&reptile.ID, &reptile.Name, &reptile.RegularPrice, &reptile.Price, &reptile.AgeCategory, &reptile.Description, &reptile.Genre)
+
+		if err != nil {
+			panic(err)
+		}
+
+		*reptileList = append(*reptileList, reptile)
+	}
 }
 
 func AddReptile(reptile models.Reptile) int {
