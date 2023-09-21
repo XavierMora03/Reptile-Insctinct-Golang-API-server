@@ -8,7 +8,7 @@ import (
 
 func RetriveReptiles(reptileList *[]models.Reptile) {
 
-	retriveReptiles := `SELECT * FROM productos.reptiles`
+	retriveReptiles := `SELECT * FROM productos.reptiles;`
 	rows, err := db.Query(retriveReptiles)
 
 	if err != nil {
@@ -29,10 +29,19 @@ func RetriveReptiles(reptileList *[]models.Reptile) {
 	}
 }
 
+func DeleteReptile(id_delete int) {
+	deleteReptileById := `DELETE FROM productos.reptiles WHERE id = $1;`
+	_, err := db.Exec(deleteReptileById, id_delete)
+	if err != nil {
+		log.Println("Error while deleting reptile with id: ", id_delete)
+		panic(err)
+	}
+}
+
 func AddReptile(reptile models.Reptile) int {
 
 	addReptilesStatement := `INSERT INTO productos.reptiles (name, RegularPrice , price,age,description,genre)
-													VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`
+													VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`
 
 	id := 0
 	err := db.QueryRow(addReptilesStatement, reptile.Name, reptile.RegularPrice, reptile.Price,

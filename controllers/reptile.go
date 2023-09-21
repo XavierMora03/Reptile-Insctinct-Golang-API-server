@@ -19,6 +19,7 @@ import (
 func GetReptiles(c *gin.Context) {
 	var newlist []models.Reptile
 	db.RetriveReptiles(&newlist)
+	db.DeleteReptile(6)
 	log.Println(newlist)
 	// c.IndentedJSON(http.StatusOK, ReptilList)
 }
