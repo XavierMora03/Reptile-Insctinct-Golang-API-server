@@ -19,8 +19,6 @@ var ReptilList = []models.Reptile{
 func GetReptiles(c *gin.Context) {
 	ReptilList = nil
 	db.RetriveReptiles(&ReptilList)
-	db.UpdateReptile(&ReptilList[1])
-	// log.Println(ReptilList)
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
