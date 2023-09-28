@@ -19,6 +19,9 @@ var ReptilList = []models.Reptile{
 func GetReptiles(c *gin.Context) {
 	ReptilList = nil
 	db.RetriveReptiles(&ReptilList)
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET")
+	c.Header("Access-Control-Allow-Headers", "Content-Type")
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 
