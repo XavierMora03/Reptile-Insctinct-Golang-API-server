@@ -1,12 +1,13 @@
 package controllers
 
 import (
-	"ReptileApi/db"
+	_ "ReptileApi/db"
 	"ReptileApi/models"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 var ReptilList = []models.Reptile{
@@ -16,12 +17,20 @@ var ReptilList = []models.Reptile{
 	{Name: "super enchi orange dream pastel ", RegularPrice: "2500", Price: "1999", AgeCategory: models.Cria, Description: "bonita het clown", Genre: models.MACHO},
 }
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
 func GetReptiles(c *gin.Context) {
-	ReptilList = nil
-	db.RetriveReptiles(&ReptilList)
+	//ReptilList = nil
+	//db.RetriveReptiles(&ReptilList)
 	c.Header("Access-Control-Allow-Origin", "*")
 	c.Header("Access-Control-Allow-Methods", "GET")
 	c.Header("Access-Control-Allow-Headers", "Content-Type")
+	//c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+	c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }
 

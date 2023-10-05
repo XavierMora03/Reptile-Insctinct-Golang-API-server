@@ -3,14 +3,15 @@ package main
 import (
 	"ReptileApi/controllers"
 	"ReptileApi/db"
+	"time"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"time"
 )
 
 func main() {
 	db.Connectdb()
-
+	db.Connectdb()
 	router := gin.Default()
 
 	router.Use(cors.New(cors.Config{
