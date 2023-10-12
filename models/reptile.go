@@ -18,10 +18,7 @@ type Reptile struct {
 	RegularPrice string `json:"regularPrice"`
 	Price        string `json:"price"`
 	AgeCategory  string `json:"age"`
-	pictures     *ReptilePictures
+	pictures     [][]byte
 	Description  string `json:"description"`
 	Genre        string `json:"genre"`
-}
-
-type ReptilePictures struct {
 }

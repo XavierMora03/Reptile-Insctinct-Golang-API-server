@@ -33,10 +33,10 @@ CREATE TABLE info_reptiles.reptiles_geneticas (
 );
 
 CREATE TABLE productos.fotos_reptiles(
-  id  SERIAL,
+  reptilID integer,
   img BYTEA NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY(id) REFERENCES productos.reptiles(id)
+  PRIMARY KEY(id,reptilID),
+  FOREIGN KEY(reptilID) REFERENCES productos.reptiles(id)
 );
 
 
