@@ -15,16 +15,15 @@ func main() {
 	router := gin.Default()
 
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://localhost*"},
-		AllowMethods:     []string{"GET", "PUT", "PATCH", "DELETE"},
-		AllowHeaders:     []string{"Origin"},
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"PUT", "PATCH", "POST", "GET", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin"}, //, "Content-Type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization", "accept", "origin", "Cache-Control", "X-Requested-With", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Access-Control-Allow-Methods", "Access-Control-Allow-Credentials"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-			return origin == "https://localhost:8080/*"
-		},
-		MaxAge: 12 * time.Hour,
-	}))
+		MaxAge:           12 * time.Hour,
+	}),
+	)
+
 	router.GET("/reptiles", controllers.GetReptiles)
 	router.POST("/reptiles", controllers.PostReptiles)
 	router.DELETE("/reptiles", controllers.DeleteReptiles)
