@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	_ "ReptileApi/db"
+	"ReptileApi/db"
 	"ReptileApi/models"
 	"fmt"
 	"log"
@@ -18,10 +18,8 @@ var ReptilList = []models.Reptile{
 }
 
 func GetReptiles(c *gin.Context) {
-	//ReptilList = nil
-	//db.RetriveReptiles(&ReptilList)
-
-	//c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	ReptilList = nil
+	db.RetriveReptiles(&ReptilList)
 
 	c.IndentedJSON(http.StatusOK, ReptilList)
 }

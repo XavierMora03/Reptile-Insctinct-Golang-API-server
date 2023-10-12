@@ -25,5 +25,5 @@ func Connectdb() {
 		panic(err)
 	}
 	db = dbPointer
-	log.Println("DATABASE SUCCESSFULLY CONNECTED!")
+	log.Println("NO ERROR WHILE OPENING DATABASE!")
 }
